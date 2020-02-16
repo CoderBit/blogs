@@ -1,0 +1,18 @@
+<!-- standard class attribute setting -->
+<div class="foo bar">Some text</div>
+
+
+<!-- Single class binding -->
+<div [class.foo]="hasFoo">Some text</div>
+
+
+<!-- Multi-class binding -->
+<div [ngClass]="['foo', 'bar']">Some text</div>
+
+
+<!-- Add or remove one CSS classe with condition with ngClass -->
+<div [ngClass]="hasFoo ? 'foo' : 'bar'">Some text</div>
+
+
+<!-- Add or remove multiple CSS classes with condition with ngClass -->
+<div [ngClass]="{'foo': hasFoo, 'bar': false}">Some text</div>

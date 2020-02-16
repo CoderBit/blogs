@@ -1,0 +1,32 @@
+HTML attribute vs. DOM property
+
+The distinction between an HTML attribute and a DOM property is key to understanding how Angular binding works. Attributes are defined by HTML. Properties are accessed from DOM (Document Object Model) nodes.
+
+A few HTML attributes have 1:1 mapping to properties; for example, id.
+
+Some HTML attributes don't have corresponding properties; for example, aria-*.
+
+Some DOM properties don't have corresponding attributes; for example, textContent.
+
+It is important to remember that HTML attribute and the DOM property are different things, even when they have the same name. In Angular, the only role of HTML attributes is to initialize element and directive state.
+
+Template binding works with properties and events, not attributes.
+
+When you write a data-binding, you're dealing exclusively with the DOM properties and events of the target object.
+
+Example 1: an <input>
+When the browser renders <input type="text" value="Joker">, it creates a corresponding DOM node with a value property initialized to "Joker".
+
+<input type="text" value="Joker">
+
+When you enters "Batman" into the <input>, the DOM element value property becomes "Batman". However, if you look at the HTML attribute value using document.getElementById('input').value, you can see that the attribute remains unchanged—it returns "Joker". While document.getElementById('input').getAttribute('value') returns "Batman"
+
+The HTML attribute value specifies the initial value; the DOM value property is the current value.
+
+
+
+
+
+
+
+

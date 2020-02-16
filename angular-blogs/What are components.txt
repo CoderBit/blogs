@@ -1,0 +1,6 @@
+
+What are components?
+Components are base building block of any Angular app.
+Components are a key feature in Angular, you build your whole application by composing it from a couple of components which you create on your own.
+
+Now we do start with this app component, the root component you should say which holds our entire application basically in the end. So this root component, this app component will be the component where we later nest or add our other components too.

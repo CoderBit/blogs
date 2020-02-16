@@ -1,0 +1,77 @@
+
+What is data binding?
+You can translate data binding with communication. Communication between TypeScript code i.e. your business logic and the template.
+
+For example you might have some result in your TypeScript code because you fetched something from a server or finished some calculation which you want to display to the user and the only thing the user sees is the template. So we need some kind of communication between both pieces to be able to really do something in our app, that is where data binding comes into play because it is responsible for this communication.
+
+There are 4 types of data binding:
+1. Interpolation
+2. Property Binding
+3. Event Binding
+4. Two Way Binding
+
+1. Interpolation:
+
+Interpolation flows a value in one direction, from a component's property into a target element property. It allows you to incorporate calculated strings into the text between HTML element tags.
+
+Syntax: {{...}}
+
+The text between the braces is a string or an expression which can be converted to string more often it's the name of a component property. Angular replaces that name with the string value of the corresponding component property.
+
+More generally, the text between the braces is a template expression that Angular first evaluates and then converts to a string. The following interpolation illustrates the point by adding two numbers:
+
+<!-- "The sum of 1 + 1 is 2" -->
+<p>The sum of 1 + 1 is {{1 + 1}}.</p>
+
+We can also pass methods in Interpolation and the expression results converts to strings
+<!-- "The sum of 1 + 1 is not 4" -->
+<p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
+
+Template expressions
+
+A template expression produces a value and appears within the double curly braces, {{ }}. Angular executes the expression and assigns it to a property of a binding target; the target could be an HTML element, a component, or a directive.
+
+The interpolation braces in {{1 + 1}} surround the template expression 1 + 1. In the property binding, a template expression appears in quotes to the right of the = symbol as in [property]="expression".
+
+In terms of syntax, template expressions are similar to JavaScript. Many JavaScript expressions are legal template expressions, with a few exceptions.
+
+You can't use JavaScript expressions that have or promote side effects, including:
+
+Assignments (=, +=, -=, ...)
+Operators such as new, typeof, instanceof, etc.
+Chaining expressions with ; or ,
+The increment and decrement operators ++ and --
+Some of the ES2015+ operators
+No support for the bitwise operators such as | and &
+
+Expression context
+The expression context is typically the component instance or refers to the properties of a component.
+
+
+Template statements
+A template statement responds to an event raised by a binding target such as an element, component, or directive. You'll see template statements in the event binding, appearing in quotes to the right of the = symbol as in (event)="statement".
+
+Like template expressions, template statements use a language that looks like JavaScript. The template statement parser differs from the template expression parser and specifically supports both basic assignment (=) and chaining expressions (with ; or ,).
+
+However, certain JavaScript syntax is not allowed:
+
+new
+increment and decrement operators, ++ and --
+operator assignment, such as += and -=
+the bitwise operators | and &
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,18 @@
+
+What is an app module?
+Angular uses components to build web pages and uses modules to basically bundle different pieces, for example components of your app into packages.
+
+But what does this app module do, what is a module then?
+Well it's as I said bundle of functionalities of our app and it basically gives Angular the information which features does my app have and use.
+
+app.module is just an empty TypeScript class which we transform it into something else by adding a decorator, here it's the @NgModule decorator which is imported from @angular/core.
+
+Now in there, we see four properties we set up on the object we passed to @NgModule, declarations, imports, providers and bootstrap.
+
+Bootstrap was responsible for telling Angular hey which component should you be aware of at the point of time the whole application starts, so which component would you basically recognize in the index.html file and that was the app component.
+
+When we added a new component to Angular and this new component now has to be registered here in the module so that Angular knows that this component exists because by default Angular will not scan all your files here.
+
+So if you don't tell it that the server component exists, it doesn't know it, just creating the file is not enough. That is why we have to register it here in the @NgModule to tell Angular hey part of this module and We do register new components in this declarations array.
+
+Imports simply allows us to add some other modules to this module because, you can split up your app into multiple modules and then you can import other modules to basically make this module a bit leaner and outsource some stuff into another module.
