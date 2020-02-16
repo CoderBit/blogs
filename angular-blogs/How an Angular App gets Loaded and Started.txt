@@ -1,0 +1,42 @@
+How an Angular App gets Loaded and Started?
+
+First, create a new Angular app using Angular CLI command
+ng new my-angular-app
+
+Now, run your Angular application using the "ng serve" command.
+ng serve
+
+We reach our Angular application at localhost:4200, this is where our development server hosted by the CLI will host our Angular application.
+
+Now the content we see here can be changed by going to the app.component.html file in our app folder and in here, we can output some text let's say I'm the app component here in the h3 tag, a normal HTML tag, save this file, we will see it in our browser.
+
+How does our browser or how does the server hosting our app know that it should render the content of app.component.html here?
+
+
+Actually, this is not the file served by the server, instead, the index.html file here is served by the server and remember that Angular is a framework which allows you to create single page application, this is the single page which is served, the index.html file.
+
+Now if you have a look at this file, we see this is a normal HTML file, In body, we get this <app-root></app-root> thing with loading…. in between. Now clearly we don't see 'loading…' in our browser, so somehow this index.html file seems to have changed and it did. <app-root></app-root> here, of course, is not a default HTML element, instead, this is one of our own components.
+
+Now let's take a closer look at the app.component.ts file. 
+app.component.tsHere you can see that we have this selector property which assigns a string as a value and this string holds 'app-root'. Now, this clearly is the same text as in our index.html file and this actually is the information Angular needed to be able to replace this part here in this index.html file with the template of this component, the component having this selector and the template on this component simply is the content here in this app.component.html file.
+
+This is what basically happens at the startup, though the missing information is how is Angular triggered, how is it kicked off to actually run over our body here of this index.html file?
+And the answer is in the final index.html file, getting served in the browser and we can verify this by inspecting the source code in the browser by pressing 'ctrl + u' on the keyboard, 
+
+Here we got a couple of script imports at the end. These are injected by the CLI automatically (whenever the ng serve process rebuilds our project, it will create bundles, Javascript script bundles and automatically add the right imports in the index.html file), so that is why we don't see it in the raw index.html file.
+So in the final index.html file, these script imports here are present and these script imports will contain our own code too. So these script files are therefore executed and they're actually the first code to be executed and that is just something you have to keep in mind, is the code we write in our main.ts file, that is why it's called main, this is the first code which gets executed.
+
+Let's have a closer look at it then.
+
+Here you see that we get a couple of imports but most importantly, 
+platformBrowserDynamic().bootstrapModule(AppModule)
+this line, this now bootstraps start our Angular application by passing an app module to this method and the app module refers to the app.module.ts file.
+
+Now if we have a look at app.module.ts file, here we actually see that here we get this bootstrap array which basically lists all the components which should be known to Angular at the point of time it analyzes our index.html file and here the circle closes because here, we reference our app component.
+
+Wrapping Up
+
+So Angular gets started, this main.ts file gets started, there we bootstrap an Angular application and we pass this 'App module' as an argument. In this module, we tell Angular, hey, there is this app component which you know when you try to start yourself and Angular now analyzes the app component, reads the set up we pass here and therefore knows this selector, app-root and now Angular is able to handle app-root in the index.html file and it knows all right this is the selector I know, you told me that I should know it because it was listed in the bootstrap array in the app module. So now I know that here I should insert the app component and the app component happens to have some HTML code, a template attached to it which is this h3 tag and this is how the Angular application starts here, this is why we see what we see.
+
+
+Thanks!
