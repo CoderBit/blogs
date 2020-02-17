@@ -61,6 +61,31 @@ operator assignment, such as += and -=
 the bitwise operators | and &
 
 
+2. Property Binding:
+
+Property binding flows a value in one direction, from a component's property into a target element property.
+
+syntax: [property]=”value”
+
+Example: <input type="email" [value]="user.email">
+
+
+3. Event Binding:
+
+When a specific DOM event happens (eg.: click, change, keyup), call the specified specified method in the component. In the example below, the cookBacon() method from the component is called when the button is clicked:
+
+<button (click)="cookBacon()"></button>
+
+
+4. Two-way data binding: [(ngModel)]=”value”
+
+Two-way binding gives your app a way to share data between a component class and its template.
+
+Using what’s called the banana in a box syntax, two-way data binding allows to have the data flow both ways. In this example, the user.email data property is used as the value for the input, but if the user changes the value, the component property gets updated automatically to the new value:
+
+<input type="email" [(ngModel)]="user.email">
+
+
 
 
 
